@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | gxdb</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+
+    <!--UnityLoader.js：Unity 官方的旧版加载器，负责拉取 .unityweb 并启动 wasm-->
+    <script src="Build/UnityLoader.js"></script>
+
+    <!--启动 Unity 场景-->
+    <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WEB1020.json", { onProgress: UnityProgress });
+    </script>
+
+    <!--录屏插件-->
+    <script src="js/WebGLRecoder.js"></script>
+    <script src="js/recorder_helper.js"></script>
+
+    <script src="Build/RainierDockingSDK.js"></script>
+    <script src="Build/SendDataToWeb.jslib"></script>
+    <script>
+        function Reset() {
+            var canvas = document.getElementById("canvas");
+            canvas.height = document.documentElement.clientHeight;
+            canvas.width = document.documentElement.clientWidth;
+            console.log(canvas.width);
+        }
+        var score = new Array();
+        //数据桥梁：Unity → 网页
+        function SendScore(x) {
+            score[0] = x[0];
+            score[1] = x[1];
+            score[2] = x[2];
+            score[3] = x[3];
+            score[4] = x[4];
+            score[5] = x[5];
+            score[6] = x[6];
+            score[7] = x[7];
+            score[8] = x[8];
+
+            score[9] = x[9];
+            score[10] = x[10];
+            score[11] = x[11];
+            score[12] = x[12];
+            score[13] = x[13];
+            score[14] = x[14];
+            score[15] = x[15];
+            score[16] = x[16];
+            score[17] = x[17];
+            score[18] = x[18];
+            score[19] = x[19];
+            score[20] = x[20];
+
+        }
+        //数据桥梁：网页 → ASP.NET
+        function SaveScore() {
+            return score[0];
+        }
+        function SaveScore1() {
+            return score[1];
+        }
+        function SaveScore2() {
+            return score[2];
+        }
+        function SaveScore3() {
+            return score[3];
+        }
+        function SaveScore4() {
+            return score[4];
+        }
+        function SaveScore5() {
+            return score[5];
+        }
+        function SaveScore6() {
+            return score[6];
+        }
+        function SaveScore7() {
+            return score[7];
+        }
+        function SaveScore8() {
+            return score[8];
+        }
+        function SaveScore9() {
+            return score[9];
+        }
+        function SaveScore10() {
+            return score[10];
+        }
+        function SaveScore11() {
+            return score[11];
+        }
+        function SaveScore12() {
+            return score[12];
+        }
+        function SaveScore13() {
+            return score[13];
+        }
+        function SaveScore14() {
+            return score[14];
+        }
+        function SaveScore15() {
+            return score[15];
+        }
+        function SaveScore16() {
+            return score[16];
+        }
+        function SaveScore17() {
+            return score[17];
+        }
+        function SaveScore18() {
+            return score[18];
+        }
+        function SaveScore19() {
+            return score[19];
+        }
+        function SaveScore20() {
+            return score[20];
+        }
+        //var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WEB0316.json", { onProgress: UnityProgress });
+    </script>
+</head>
+<body>
+    <div class="webgl-content">
+        <!--gameContainer 就是 Unity 画布的占位-->
+        <div id="gameContainer" style="width: 960px; height: 600px"></div>
+        <div class="footer">
+            <div class="webgl-logo"></div>
+            <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+            <div class="title">gxdb</div>
+        </div>
+
+        <!-- 录屏按钮 -->
+        <div style="position:fixed;top:20px;left:20px;z-index:999;">
+            <button onclick="startRecordNow()">开始录屏</button>
+            <button onclick="stopRecordNow()">停止录屏</button>
+        </div>
+
+    </div>
+</body>
+</html>
